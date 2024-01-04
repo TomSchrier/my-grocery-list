@@ -1,0 +1,12 @@
+<!-- 👇 conditionally render the groceries to buy, or remove the grocery   -->
+@if (grocery.isBought === false) {
+<li>
+  <span>To buy: {{ grocery.name }} (x {{ grocery.quantity }})</span>
+  <button (click)="buyGrocery()">Buy {{ grocery.name }}</button>
+</li>
+} @else {
+<li class="bought">
+  <span>{{ grocery.name }} (x {{ grocery.quantity }})</span>
+  <button (click)="putBackGrocery()">Remove {{ grocery.name }}</button>
+</li>
+}
