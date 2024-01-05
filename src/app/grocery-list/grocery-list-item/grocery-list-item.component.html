@@ -2,11 +2,45 @@
 @if (grocery.isBought === false) {
 <li>
   <span>To buy: {{ grocery.name }} (x {{ grocery.quantity }})</span>
-  <button (click)="buyGrocery()">Buy {{ grocery.name }}</button>
+  <button class="e-btn e-btn--sm e-ml-8" (click)="isModalOpen = true">
+    <span class="e-btn__title"> Buy {{ grocery.name }}</span>
+  </button>
 </li>
 } @else {
 <li class="bought">
   <span>{{ grocery.name }} (x {{ grocery.quantity }})</span>
-  <button (click)="putBackGrocery()">Remove {{ grocery.name }}</button>
+  <button
+    class="e-btn e-btn--secondary e-btn--sm e-ml-8"
+    (click)="putBackGrocery()"
+  >
+    Remove {{ grocery.name }}
+  </button>
 </li>
 }
+<elvia-modal
+  [heading]="'Kjøpe ' + grocery.name + '?'"
+  [isShowing]="isModalOpen"
+  (onClose)="isModalOpen = false"
+>
+  <!-- 👇 When the Elvia design system documentation says 'slot in web component' you can do that like this. Write 'slot'="NAME_OF_SLOT_HERE"  -->
+  <div slot="content">
+    <div>
+      Du er i ferd med å kjøpe {{ grocery.quantity }} {{ grocery.name }}. Er du
+      sikker på at du vil kjøpe?
+    </div>
+  </div>
+  <button
+    slot="primaryButton"
+    class="e-btn e-btn--primary e-btn--lg"
+    (click)="buyGrocery()"
+  >
+    Kjøp!
+  </button>
+  <button
+    slot="secondaryButton"
+    class="e-btn e-btn--secondary e-btn--lg"
+    (click)="isModalOpen = false"
+  >
+    Avbryt
+  </button>
+</elvia-modal>

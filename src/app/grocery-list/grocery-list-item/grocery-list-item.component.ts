@@ -1,4 +1,10 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  CUSTOM_ELEMENTS_SCHEMA,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+} from '@angular/core';
 import { Grocery } from '../../shared/types';
 
 @Component({
@@ -7,6 +13,7 @@ import { Grocery } from '../../shared/types';
   imports: [],
   templateUrl: './grocery-list-item.component.html',
   styleUrl: './grocery-list-item.component.scss',
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class GroceryListItemComponent {
   //👇 inputs given by the parent component (GroceryListComponent)
@@ -20,9 +27,12 @@ export class GroceryListItemComponent {
   @Output() buy = new EventEmitter<string>();
   @Output() putBack = new EventEmitter<string>();
 
+  isModalOpen = false;
+
   //👇 the component's methods (things it can do)
   buyGrocery() {
     this.buy.emit(this.grocery.name);
+    this.isModalOpen = false;
   }
 
   putBackGrocery() {

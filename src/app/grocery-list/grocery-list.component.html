@@ -2,11 +2,11 @@
   <p>grocery-list works!</p>
 </div>
 
-<!-- 👇loop over the groceriesToBuy array and render a <app-grocery-list-item> for each grocery in the array -->
-<ul>
+<ul class="e-list">
+  <!-- 👇loop over the groceriesToBuy array and render a <app-grocery-list-item> component for each grocery in the array -->
   @for(grocery of groceriesToBuy; track $index ){
 
-  <!-- 👇inputs are the square brackets [], outputs are the parentheses () -->
+  <!-- 👇inputs are the square brackets [], outputs are the parentheses ()! -->
   <app-grocery-list-item
     [grocery]="grocery"
     (buy)="markAsBought(grocery.name)"

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, Component } from '@angular/core';
 import { GroceryListItemComponent } from './grocery-list-item/grocery-list-item.component';
 import { Grocery } from '../shared/types';
 

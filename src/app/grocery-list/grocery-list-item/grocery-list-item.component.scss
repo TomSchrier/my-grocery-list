@@ -1,8 +1,5 @@
-li {
-  background-color: lightblue;
-}
-
 .bought {
   text-decoration: line-through;
-  color: gray;
+  /* 👇 this is a "Token" / CSS-Variable from the Elvia Design System. its sets the correct gray color for text! This way you wont have to write HEX codes every time. */
+  color: var(--e-color-text-2);
 }
